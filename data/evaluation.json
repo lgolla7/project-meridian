@@ -1,0 +1,188 @@
+{
+  "method": "Deterministic lookup over the SQLite knowledge file. No paid model.",
+  "questions": [
+    {
+      "question": "How is OpenLPBF v2 organized?",
+      "intent": "overview",
+      "abstained": false,
+      "latency_ms": 9.31,
+      "visuals": [
+        {
+          "kind": "diagram",
+          "id": "DIAGRAM-SYSTEMLEVELS",
+          "title": "SystemLevels.png",
+          "has_3d": false,
+          "distribution": "diagram"
+        }
+      ],
+      "citation_count": 4,
+      "answer": "OpenLPBF v2 in this corpus is one research metal laser powder-bed-fusion machine, described by 30 drawings and 192 BOM rows.\nThe upstream description gives a 250 mm by 150 mm build volume, a 300 W 1080 nm laser, and closed-loop gas-flow cross flow.\nThe upstream description names an ABB Pluto D20 safety PLC as the safety controller.\nThe upstream project states that the design is published under CERN-OHL-P v2.\nBox: 5 drawings (2 unreadable), BOM family Box has 25 rows. Powder: 5 drawings (1 unreadable), BOM family Powder has 17 rows. Recoater: 5 drawings (1 unreadable), BOM family Recoater has 19 rows. Optical: 5 drawings (1 unreadable), BOM family Optics has 10 rows. Gas Flow: 2 drawings (1 unreadable), BOM family Gas flow has 19 rows. Z-axis: 8 drawings (2 unreadable), BOM family Build-plate has 14 rows.\nDrawing subsystems and BOM families do not share one vocabulary: Optical maps to Optics, and Z-axis maps to Build-plate. Electric, SensorGantry, Support, and Raw Materials have BOM rows and no sheet in this 30-drawing set.\nOrbitable 3D reconstructions, labeled as reconstructions rather than CAD, exist for D-005 Window Clamp Frame, D-007 Dispenser Shaft v6, D-010 Powder motor plate."
+    },
+    {
+      "question": "What is the material of the window frame, and does the drawing agree?",
+      "intent": "part",
+      "abstained": false,
+      "latency_ms": 1.08,
+      "visuals": [
+        {
+          "kind": "drawing",
+          "id": "D-005",
+          "title": "Window Clamp Frame",
+          "has_3d": true,
+          "distribution": "clean"
+        }
+      ],
+      "citation_count": 3,
+      "answer": "Window Frame is a Custom Box row, BOM B015, source row 15.\nLinked drawing D-005 (Window Clamp Frame, title from title block), clean, subsystem Box.\nBOM material: Aluminium\nD-005 material callout: 6061 Alloy\nD-005 title-block weight line: 6061 Alloy 315.0\nThe drawing names alloy 6061, which the BOM material cell does not. That is a more specific callout, not a second metal family, unless a correction is accepted.\nD-005 has an orbitable reconstruction: Window Clamp Frame. Reconstruction from 2D evidence, not native CAD.\nPlan size 323 by 236 mm and opening 297.2 by 210.2 mm are callouts on D-005. The note 'Holds 210x297mm laser window' is why 297 sits on the long side and 210 on the short side. Thickness uses the 8.2 callout. Section callouts 3.3 and 2.0, the o-ring grooves, and the 20 M4 holes are not in the solid. This is a reconstruction from 2D evidence, not native CAD."
+    },
+    {
+      "question": "Show the dispenser shaft and its 3D reconstruction.",
+      "intent": "part",
+      "abstained": false,
+      "latency_ms": 0.79,
+      "visuals": [
+        {
+          "kind": "drawing",
+          "id": "D-007",
+          "title": "Dispenser Shaft v6",
+          "has_3d": true,
+          "distribution": "clean"
+        }
+      ],
+      "citation_count": 2,
+      "answer": "D-007 is Dispenser Shaft v6. The title comes from the title-block. Subsystem Powder. Distribution clean.\nMaterial callout: Aluminium\nNo BOM row is settled for this sheet. Facts from similarly named rows are not copied in.\nD-007 has an orbitable reconstruction: Dispenser Shaft v6. Reconstruction from 2D evidence, not native CAD.\n29.0 + 269.5 + 37.6 equals the 336.1 overall length callout, so those three lengths are the segments. The sheet calls out 8.0 g8 twice and also 25.0. Putting the 8 mm journals on the short ends is an inference: the extracted text has no diameter symbol tying 25.0 to the middle. The three helical grooves are not modeled. This is a reconstruction from 2D evidence, not native CAD."
+    },
+    {
+      "question": "Is the powder motor plate the same part as the build-plate motor plate?",
+      "intent": "part",
+      "abstained": false,
+      "latency_ms": 0.88,
+      "visuals": [
+        {
+          "kind": "drawing",
+          "id": "D-010",
+          "title": "Motor Plate",
+          "has_3d": true,
+          "distribution": "clean"
+        },
+        {
+          "kind": "drawing",
+          "id": "D-030",
+          "title": "Z-axis motor plate",
+          "has_3d": false,
+          "distribution": "degraded-only"
+        }
+      ],
+      "citation_count": 3,
+      "answer": "D-010 is Motor Plate. The title comes from the title-block. Subsystem Powder. Distribution clean.\nMaterial callout: 2mm non-magnetic stainless\nNo BOM row is settled for this sheet. Facts from similarly named rows are not copied in.\nNot the same part as Motor plate (B048). The build-plate Motor plate is aluminium and holds three non-captive steppers. D-010 is filed as PowderMotorPlate and calls out 2 mm non-magnetic stainless. Shared words, conflicting materials.\nPossible BOM row Powder stepper bracket (B092), not settled. Closest custom stainless part in the powder family. The drawing never uses that name, so the link stays a candidate.\nD-010 has an orbitable reconstruction: Powder motor plate. Reconstruction from 2D evidence, not native CAD.\n107 mm and 70 mm are the two largest plan callouts. 2 mm is the explicit thickness in '2mm non-magnetic stainless'. 30 mm and 15 mm are smaller and are treated as hole positions, not the envelope. Holes are omitted. This is a reconstruction from 2D evidence, not native CAD.\nAlso matched D-030 / Motor plate, because a shorter name is inside the question. It is a different record."
+    },
+    {
+      "question": "Which parts are recorded as stainless steel?",
+      "intent": "material",
+      "abstained": false,
+      "latency_ms": 3.02,
+      "visuals": [],
+      "citation_count": 1,
+      "answer": "Parts whose recorded material cell, after any accepted correction, falls in the stainless group. A blank cell is omitted rather than treated as this material.\nBox (7): Left Side Box [Stainless steel]; Back Box [Stainless steel]; Top Side [Stainless steel]; Front Side Box [Stainless steel]; Right Box [Stainless steel]; Top Side Bracing [Stainless steel]; Top Side Powder Bracing [Stainless steel]\nBuild-plate (1): Build Plate [Stainless steel,Steel]\nOptics (1): Galve support bracket [Stainless steel,Steel]\nPowder (3): Powder hopper [Stainless steel]; Powder handling mount bracket [Stainless steel]; Powder stepper bracket [Stainless steel]\nRecoater (2): Recoater Wall [Stainless steel]; Recoater End stop bracket [Stainless steel]\nSupport (1): 19\" Rack plates [Steel,Stainless steel]\nDrawing callouts in the same group, kept separate from the BOM: D-002 Left Wall [2mm non-magnetic stainless]; D-004 Top Plate [3 mm non-magnetic stainless]; D-006 Canister Wall [Non-magnetic stainless 3mm (or thicker)]; D-008 Powder Bracket [2-3mm non-magnetic stainless]; D-010 Motor Plate [2mm non-magnetic stainless]; D-021 Blower Outlet [Non-magnetic stainless]; D-026 Build Plate [AISI 316]."
+    },
+    {
+      "question": "What interfaces with the front door?",
+      "intent": "part",
+      "abstained": false,
+      "latency_ms": 0.73,
+      "visuals": [
+        {
+          "kind": "drawing",
+          "id": "D-001",
+          "title": "Door x2",
+          "has_3d": false,
+          "distribution": "degraded-only"
+        }
+      ],
+      "citation_count": 2,
+      "answer": "Front Door is a Custom Box row, BOM B010, source row 10.\nLinked drawing D-001 (Door x2, title from filename), degraded-only, subsystem Box.\nD-001 is also linked to Back Door, because one sheet covers more than one BOM row.\nInterfaces, read in both directions: Front Side Box, Front door hinge, Front door latch."
+    },
+    {
+      "question": "What supplier and cost are recorded for the laser safety window?",
+      "intent": "part",
+      "abstained": false,
+      "latency_ms": 0.77,
+      "visuals": [],
+      "citation_count": 1,
+      "answer": "Laser safety window is a Standard Box row, BOM B025, source row 25.\nRecorded supplier: Masentia\nRecorded order number: (blank)\nRecorded unit cost DKK2400.00, amount 1, recorded total DKK2400.00.\nSupplier, order number, and cost are the pinned BOM snapshot. They are not a current price, a stock check, or an endorsement."
+    },
+    {
+      "question": "What are the hole sizes on the powder canister drawing?",
+      "intent": "part",
+      "abstained": true,
+      "latency_ms": 0.71,
+      "visuals": [
+        {
+          "kind": "drawing",
+          "id": "D-009",
+          "title": "Powder canister",
+          "has_3d": false,
+          "distribution": "degraded-only"
+        }
+      ],
+      "citation_count": 2,
+      "answer": "D-009 is Powder canister. The title comes from the filename, because the sheet has no extractable text. Subsystem Powder. Distribution degraded-only.\nNo BOM row is settled for this sheet. Facts from similarly named rows are not copied in.\nPossible BOM row Powder hopper (B088), not settled. Filename PowderCanister versus BOM Powder hopper. Both are powder containers. The scan has no text to confirm the match.\nHole sizes and other dimensions on D-009 are not answered. The sheet is a degraded scan with no extractable text, and there is no reconstruction.\nOrbitable reconstructions exist only for D-005 (Window Clamp Frame), D-007 (Dispenser Shaft v6), D-010 (Powder motor plate)."
+    },
+    {
+      "question": "What is the laser M2?",
+      "intent": "abstain",
+      "abstained": true,
+      "latency_ms": 0.77,
+      "visuals": [],
+      "citation_count": 0,
+      "answer": "Nothing in the extracted drawings, BOM, or upstream notes supports an answer to that.\nI am not guessing. Ask about a named part, a subsystem, a recorded material, a supplier in the snapshot, or an interface."
+    },
+    {
+      "question": "Where do drawing materials and BOM materials disagree?",
+      "intent": "conflicts",
+      "abstained": false,
+      "latency_ms": 1.44,
+      "visuals": [
+        {
+          "kind": "drawing",
+          "id": "D-005",
+          "title": "Window Clamp Frame",
+          "has_3d": true,
+          "distribution": "clean"
+        },
+        {
+          "kind": "drawing",
+          "id": "D-010",
+          "title": "Motor Plate",
+          "has_3d": true,
+          "distribution": "clean"
+        },
+        {
+          "kind": "drawing",
+          "id": "D-012",
+          "title": "Recoater Mount Block",
+          "has_3d": false,
+          "distribution": "clean"
+        },
+        {
+          "kind": "drawing",
+          "id": "D-013",
+          "title": "Recoater Plate",
+          "has_3d": false,
+          "distribution": "clean"
+        }
+      ],
+      "citation_count": 0,
+      "answer": "Comparisons use only rows with a depicts or candidate link. Rejected links are listed on their own so a shared name is not treated as agreement.\nD-001 linked to Front Door cannot be checked: the sheet has no extractable text.\nD-001 linked to Back Door cannot be checked: the sheet has no extractable text.\nD-003 linked to Print Platform cannot be checked: the sheet has no extractable text.\nD-005 / Window Frame: drawing alloy 6061 is more specific than BOM material Aluminium.\nD-009 linked to Powder hopper cannot be checked: the sheet has no extractable text.\nD-010 rejected as Motor plate. The build-plate Motor plate is aluminium and holds three non-captive steppers. D-010 is filed as PowderMotorPlate and calls out 2 mm non-magnetic stainless. Shared words, conflicting materials.\nD-011 linked to Recoater Arm cannot be checked: the sheet has no extractable text.\nD-012 / Recoater mount block: drawing alloy 3.3315, 5005 is more specific than BOM material Aluminium.\nD-013 / Recoater head: drawing alloy 3.3315, 5005 is more specific than BOM material Aluminium.\nD-014 / Recoater stage plate: drawing alloy 3.3315, 5005 is more specific than BOM material Aluminium.\nD-016 / Sunny Galvo Adapter Plate: drawing alloy 7075 is more specific than BOM material Aluminium.\nD-018 / Galve support bracket: BOM ['stainless', 'steel'] versus drawing ['aluminium'] (candidate).\nD-020 linked to F-theta seal ring cannot be checked: the sheet has no extractable text.\nD-021 rejected as Gas flow end duct. Blower Outlet is non-magnetic stainless and welded. Gas flow end duct is recorded as polymer. The names also differ.\nD-022 linked to Gas flow inlet geometry cannot be checked: the sheet has no extractable text.\nD-023 linked to Build cylinder cannot be checked: the sheet has no extractable text.\nD-024 / Build base: drawing alloy 3.3315, 5005 is more specific than BOM material Aluminium.\nD-026 / Build Plate: drawing alloy 316 is more specific than BOM material Stainless steel,Steel.\nD-027 / Build cylinder clamp ring: drawing alloy 6063 is more specific than BOM material Aluminium.\nD-028 / Heating element plate: drawing alloy 3.3315, 5005 is more specific than BOM material Aluminium.\nD-030 linked to Motor plate cannot be checked: the sheet has no extractable text.\nD-017 carries two names in one sheet, Galvo Montage Plade and Galvo Collimator Plade. Neither is forced onto a BOM row."
+    }
+  ],
+  "correction": {
+    "before": "Window Frame is a Custom Box row, BOM B015, source row 15.\nLinked drawing D-005 (Window Clamp Frame, title from title block), clean, subsystem Box.\nBOM material: Aluminium\nD-005 material callout: 6061 Alloy\nD-005 title-block weight line: 6061 Alloy 315.0\nThe drawing names alloy 6061, which the BOM material cell does not. That is a more specific callout, not a second metal family, unless a correction is accepted.\nD-005 has an orbitable reconstruction: Window Clamp Frame. Reconstruction from 2D evidence, not native CAD.\nPlan size 323 by 236 mm and opening 297.2 by 210.2 mm are callouts on D-005. The note 'Holds 210x297mm laser window' is why 297 sits on the long side and 210 on the short side. Thickness uses the 8.2 callout. Section callouts 3.3 and 2.0, the o-ring grooves, and the 20 M4 holes are not in the solid. This is a reconstruction from 2D evidence, not native CAD.",
+    "proposal_check": {
+      "id": 1,
+      "status": "pending",
+      "summary": "Drawing text supports at least part of the proposed material. The original BOM cell is kept either way."
+    },
+    "after": "Window Frame is a Custom Box row, BOM B015, source row 15.\nLinked drawing D-005 (Window Clamp Frame, title from title block), clean, subsystem Box.\nMaterial used in answers: 6061 aluminium\nOriginal BOM material: Aluminium\nAccepted correction #1 replaced the material used in answers. The BOM cell itself is unchanged.\nD-005 material callout: 6061 Alloy\nD-005 title-block weight line: 6061 Alloy 315.0\nD-005 and the BOM agree on aluminium.\nD-005 has an orbitable reconstruction: Window Clamp Frame. Reconstruction from 2D evidence, not native CAD.\nPlan size 323 by 236 mm and opening 297.2 by 210.2 mm are callouts on D-005. The note 'Holds 210x297mm laser window' is why 297 sits on the long side and 210 on the short side. Thickness uses the 8.2 callout. Section callouts 3.3 and 2.0, the o-ring grooves, and the 20 M4 holes are not in the solid. This is a reconstruction from 2D evidence, not native CAD."
+  }
+}

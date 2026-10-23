@@ -1,0 +1,16 @@
+{
+  "note": "Examples the local chat answers from extracted records. Not a hidden test contract.",
+  "questions": [
+    "How is OpenLPBF v2 organized?",
+    "What is the material of the window frame, and does the drawing agree?",
+    "Show the dispenser shaft and its 3D reconstruction.",
+    "Is the powder motor plate the same part as the build-plate motor plate?",
+    "Which parts are recorded as stainless steel?",
+    "What interfaces with the front door?",
+    "What supplier and cost are recorded for the laser safety window?",
+    "What are the hole sizes on the powder canister drawing?",
+    "What is the laser M2?",
+    "Where do drawing materials and BOM materials disagree?",
+    "Propose a correction: Window Frame material should be 6061 aluminium"
+  ]
+}

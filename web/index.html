@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project Meridian</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="mark">M</div>
+      <div>
+        <strong>Project Meridian</strong>
+        <em>Chat over extracted OpenLPBF v2 evidence</em>
+      </div>
+    </div>
+    <nav>
+      <button type="button" data-view="explore" class="active">Explore</button>
+      <button type="button" data-view="review">Review <span id="pending-count"></span></button>
+      <button type="button" data-view="graph">Graph</button>
+    </nav>
+  </header>
+
+  <div class="workspace" id="explore">
+    <section class="chat">
+      <div class="bar"><h2>Chat</h2><span class="model-status" id="model-status">Checking the model…</span></div>
+      <div class="messages" id="messages"></div>
+      <div class="examples" id="examples"></div>
+      <form class="composer" id="composer">
+        <textarea id="input" placeholder="Ask about a part, a material, a supplier, or an interface"></textarea>
+        <button class="primary" type="submit">Ask</button>
+      </form>
+    </section>
+    <section class="viewer">
+      <div class="bar">
+        <h2 id="viewer-title">Drawing</h2>
+        <div id="viewer-badges"></div>
+      </div>
+      <div class="bar" id="page-bar" hidden>
+        <button type="button" class="text-button" id="prev-page">Previous</button>
+        <span id="page-label"></span>
+        <button type="button" class="text-button" id="next-page">Next</button>
+        <a id="pdf-link" href="#" target="_blank">Original PDF</a>
+      </div>
+      <div class="stage" id="stage">
+        <div class="empty" id="empty-stage">Ask about a part and its drawing opens here.</div>
+        <img id="sheet" alt="Fabrication drawing" hidden>
+        <img id="diagram" alt="" hidden>
+      </div>
+      <div class="switches" id="switches"></div>
+    </section>
+    <section class="side">
+      <div class="bar"><h2>Reconstruction</h2></div>
+      <p class="note">Labeled reconstruction from 2D evidence, not native CAD. Drag to orbit. Scroll to zoom. The motion is a view axis, not a drawing datum.</p>
+      <canvas id="view3d" width="640" height="480"></canvas>
+      <p class="caveat" id="recon-caveat">No reconstruction is open. The three solids are the window clamp frame (D-005), the dispenser shaft (D-007), and the powder motor plate (D-010).</p>
+      <div class="parts" id="parts"></div>
+    </section>
+  </div>
+
+  <section class="review" id="review" hidden>
+    <h2>Review</h2>
+    <p class="hint">A proposal filed in chat waits here. Accepting changes later answers. The original BOM cell stays in the record.</p>
+    <div id="review-list"></div>
+  </section>
+
+  <section class="graph-wrap" id="graph-view" hidden>
+    <canvas id="graph"></canvas>
+    <aside id="graph-detail"><p>Click a node. Drawings open in Explore.</p></aside>
+  </section>
+
+  <script src="/assets/viewer3d.js"></script>
+  <script src="/assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# FastAPI serves the chat API and the browser UI in one process.
+fastapi==0.115.6
+# Uvicorn is the local ASGI server started by start.sh.
+uvicorn==0.33.0
+# pypdf reads the text layer. Degraded scans come back empty, which is the abstain signal.
+pypdf==6.21.1
+# PDFium paints each sheet into the viewer. Pillow stores that bitmap as PNG.
+pypdfium2==5.14.0
+pillow==11.3.0
